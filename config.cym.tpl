@@ -15,19 +15,9 @@ set space cell
     shape = periodic
 }
 
-set space antibuckle
-{
-    shape = rectangle
-}
-
 new cell
 {
     length = 2.5, 0.5
-}
-
-new antibuckle
-{
-	length = 2, 0.1
 }
 
 set fiber microtubule
@@ -130,13 +120,32 @@ set hand EB
     unbinding_rate = 2
 	
 	%TESTING:
-	unbinding_force = [[0.01, 0.1, 1]]
+	unbinding_force = 1
 	
 	activity = track
     bind_only_end = plus_end
     bind_end_range = 0.1 %100nm
 	bind_only_growing_end = 1
-    track_end = [[0, 1]]
+    track_end = 1
+    bind_also_end = 1
+    display = ( color=green; size=4; )
+}
+
+set hand EB100
+{
+    binding_rate = 10
+    binding_range = 0.01
+	binding_key = 1
+    unbinding_rate = 2
+	
+	%TESTING:
+	unbinding_force = 1
+	
+	activity = track
+    bind_only_end = plus_end
+    bind_end_range = 0.1 %100nm
+	bind_only_growing_end = 1
+    track_end = 0
     bind_also_end = 1
     display = ( color=green; size=4; )
 }
@@ -149,7 +158,7 @@ set hand EB_tail
 	unbinding_force = 10
 	
 	% TESTING:
-	unbinding_rate = [[0.01, 0.03, 0.1, 0.3, 1.0]]
+	unbinding_rate = 6.0
 	
 	bind_also_end = 1
 	
@@ -160,6 +169,15 @@ set couple EB3
 {
 	hand1 = EB_tail
 	hand2 = EB
+	diffusion = 0.2
+	stiffness = 200
+    length = 0
+}
+
+set couple bindEB3
+{
+	hand1 = EB_tail
+	hand2 = EB100
 	diffusion = 0.2
 	stiffness = 200
     length = 0
@@ -187,7 +205,8 @@ new 1 microtubule
 	plus_end = grow
 }
 
-new 2000 EB3
+new 1000 EB3
+new 1000 bindEB3
 
 new 1000 pseudo
 {
