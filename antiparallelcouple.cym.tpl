@@ -87,7 +87,7 @@ set hand EB
     bind_only_end = plus_end
     bind_end_range = 0.1 %100nm
 	bind_only_growing_end = 1
-    track_end = 0
+    track_end = [[0,1]]
     bind_also_end = 1
     display = ( color=green; size=4; )
 }
