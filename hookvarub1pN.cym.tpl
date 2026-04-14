@@ -158,7 +158,7 @@ set hand EB_tail
 	unbinding_force = 10
 	
 	% TESTING:
-	unbinding_rate = 6.0
+	unbinding_rate = [[2, 3, 4, 5, 6]]
 	
 	bind_also_end = 1
 	
